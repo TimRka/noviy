@@ -312,8 +312,14 @@ class LabWorkApp:
 
     def unique_values(self):
         numbers = [random.randint(1, 10) for _ in range(20)]
-        unique = list(set(numbers))
-        self.show_result(f"Случайные числа: {numbers}\nУникальные: {unique}")
+        unique = {}
+        true_unique = []
+        for i in numbers:
+            unique[i] = unique.get(i, 0) + 1
+        for number, count in unique.items():
+            if count == 1:
+                true_unique.append(number)
+        self.show_result(f"Случайные числа: {numbers}\nУникальные: {true_unique}")
 
     def element_frequency(self):
         numbers = [random.randint(1, 5) for _ in range(15)]
